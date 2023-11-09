@@ -1,0 +1,60 @@
+---
+title: "simple linear regression"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+library(broom)
+library(psych)
+library(modelr)
+library(ggfortify)
+```
+
+```{r}
+url <-"https://github.com/prasertcbs/basic-dataset/raw/master/height_mass_women.csv"
+df<-  read_csv(url)
+```
+
+
+```{r}
+summary(df)
+```
+
+```{r}
+describe(df)
+```
+```{r}
+df %>% ggplot(aes(x=Height_m,y=Mass_kg))+geom_point()+
+      stat_smooth(method = 'lm',se=FALSE)
+```
+```{r}
+model <- lm(Mass_kg ~ Height_m, data=df)
+model
+```
+```{r}
+summary(model)
+```
+```{r}
+tidy(model)
+```
+```{r}
+glance(model)
+```
+$$y=-39.061+61.27 \times Height_m$$
+
+```{r}
+mse(model,df)
+```
+```{r}
+model$residuals
+```
+```{r}
+sum(model$residuals**2)/length(df$Height_m)
+```
+```{r}
+plot(model)
+```
+```{r}
+autoplot(model, which = 1:6 ,ncol = 3)
+```
