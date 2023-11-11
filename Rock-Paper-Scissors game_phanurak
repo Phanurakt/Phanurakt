@@ -1,0 +1,33 @@
+play_RPS_game <- function(team1_choice, team2_choice) {
+  
+  team1_choice <- tolower(team1_choice)
+  team2_choice <- tolower(team2_choice)
+  
+ 
+  valid_choices <- c("rock", "paper", "scissors")
+  if (!(team1_choice %in% valid_choices) || !(team2_choice %in% valid_choices)) {
+    return("Invalid choices. Please choose rock, paper, or scissors.")
+  }
+  
+  
+  if (team1_choice == team2_choice) {
+    result <- "It's a tie!"
+  } else if (
+    (team1_choice == "rock" && team2_choice == "scissors") ||
+    (team1_choice == "paper" && team2_choice == "rock") ||
+    (team1_choice == "scissors" && team2_choice == "paper")
+  ) {
+    result <- "Thai national team wins🇹🇭"
+  } else {
+    result <- "England national team wins🏴󠁧󠁢󠁥󠁮󠁧󠁿"
+  }
+  
+  
+  return(paste("Thai national team chose:", team1_choice, "\nEngland national team chose:", team2_choice, "\nResult:", result))
+}
+
+# PLAY
+team1_choice <- "Rock"  
+team2_choice <- "Scissors"  
+result <- play_RPS_game(team1_choice, team2_choice)
+cat(result)
