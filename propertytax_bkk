@@ -1,0 +1,47 @@
+---
+title: "ข้อมูลการจัดเก็บภาษีโรงเรือนและที่ดิน จำแนกตามเขตการปกครองกรุงเทพมหานคร"
+output: html_notebook
+---
+
+```{r}
+read.csv("propertytax.csv")
+df1 <-read.csv("propertytax.csv")
+```
+```{r}
+summary(df1)
+```
+```{r}
+data <- data.frame(
+  dcode = c(1000, 1012, 1025, 1038, 1050),
+  num_taxpayers54 = c(4, 2077, 2628, 3375, 10634),
+  num_taxpayers55 = c(6, 1931, 2585, 3094, 10757),
+  num_taxpayers56 = c(6, 2113, 2843, 3467, 5399),
+  num_taxpayers57 = c(5, 2193, 2841, 3416, 6368),
+  num_taxpayers58 = c(7, 2272, 3082, 3564, 5530),
+  num_taxpayers59 = c(8, 2444, 3107, 3706, 10092),
+  num_taxpayers60 = c(6, 2348, 3071, 3947, 7479),
+  num_taxpayers61 = c(7, 2350, 2988, 3748, 6067),
+  money54 = c(24462600, 84000436, 121572480, 185834807, 207920512),
+  money55 = c(26131240, 82576956, 122165648, 189396000, 231461960),
+  money56 = c(2.899e+07, 8.664e+07, 1.352e+08, 2.045e+08, 2.444e+08),
+  money57 = c(3.025e+07, 8.827e+07, 1.408e+08, 2.171e+08, 2.537e+08),
+  money58 = c(3.559e+07, 1.005e+08, 1.467e+08, 2.258e+08, 2.589e+08),
+  money59 = c(4.216e+07, 1.026e+08, 1.565e+08, 2.411e+08, 2.781e+08),
+  money60 = c(4.971e+07, 1.075e+08, 1.728e+08, 2.7e+08, 3.194e+08),
+  money61 = c(4.816e+07, 1.169e+08, 1.857e+08, 2.73e+08, 3.022e+08)
+)
+```
+```{r}
+boxplot(data[, 2:9], main="Boxplot of num_taxpayers", xlab="Year", ylab="Number of Taxpayers66")
+
+```
+
+```{r}
+boxplot(data[, 10:17], main="money", xlab="Year", ylab="Money")
+
+```
+```{r}
+summary(data)
+```
+
+
