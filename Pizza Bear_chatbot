@@ -1,0 +1,88 @@
+# "Hello Pizza Bear"
+pizza_bear_chatbot <- function() {
+  cat("🍕 Welcome to Pizza Bear! How can I assist you today? 🐻\n")
+  
+  # Initialize order and total price
+  order_items <- list()
+  total_price <- 0
+  
+  # Start taking orders
+  while (TRUE) {
+    cat("\nWhat would you like to do?\n")
+    cat("1. 🍕 Browse Pizza Menu\n")
+    cat("2. 🍹 View Beverage Menu\n")
+    cat("3. 🛒 Review Order\n")
+    cat("4. 🚪 Checkout and Finish\n")
+    
+    user_choice <- tolower(readline("Enter the number corresponding to your choice: "))
+    
+    if (user_choice == "1") {
+      # Browse Pizza Menu
+      cat("\n🍕 Pizza Menu:\n")
+      cat("1. Margherita - $10.99\n")
+      cat("2. Pepperoni - $12.99\n")
+      cat("3. Veggie - $11.99\n")
+      
+      pizza_choice <- tolower(readline("Enter the number of the pizza you'd like to order (or '0' to go back): "))
+      
+      if (pizza_choice %in% c("1", "2", "3")) {
+        pizza_name <- switch(pizza_choice, "1" = "Margherita", "2" = "Pepperoni", "3" = "Veggie")
+        
+        cat("\nYou've added", pizza_name, "to your order.\n")
+        order_items[[length(order_items) + 1]] <- paste(pizza_name, "- $", switch(pizza_choice, "1" = "10.99", "2" = "12.99", "3" = "11.99"))
+        total_price <- total_price + as.numeric(switch(pizza_choice, "1" = 10.99, "2" = 12.99, "3" = 11.99))
+      } else if (pizza_choice == "0") {
+        # Go back to the main menu
+        next
+      } else {
+        cat("\nInvalid input. Please enter a valid pizza number or '0' to go back.\n")
+      }
+    } else if (user_choice == "2") {
+      # View Beverage Menu
+      cat("\n🍹 Beverage Menu:\n")
+      cat("1. Coke - $1.99\n")
+      cat("2. Sprite - $1.99\n")
+      cat("3. Pepsi - $1.99\n")
+      cat("4. Bottled Water - $0.99\n")
+      
+      bev_choice <- tolower(readline("Enter the number of the beverage you'd like to add (or '0' to go back): "))
+      
+      if (bev_choice %in% c("1", "2", "3", "4")) {
+        bev_name <- switch(bev_choice, "1" = "Coke", "2" = "Sprite", "3" = "Pepsi", "4" = "Bottled Water")
+        
+        cat("\nYou've added", bev_name, "to your order.\n")
+        order_items[[length(order_items) + 1]] <- paste(bev_name, "- $", switch(bev_choice, "1" = "1.99", "2" = "1.99", "3" = "1.99", "4" = "0.99"))
+        total_price <- total_price + as.numeric(switch(bev_choice, "1" = 1.99, "2" = 1.99, "3" = 1.99, "4" = 0.99))
+      } else if (bev_choice == "0") {
+        # Go back to the main menu
+        next
+      } else {
+        cat("\nInvalid input. Please enter a valid beverage number or '0' to go back.\n")
+      }
+    } else if (user_choice == "3") {
+      # Review Order
+      cat("\n🛒 Your Order:\n")
+      if (length(order_items) == 0) {
+        cat("Your order is empty. Let's add some delicious items!\n")
+      } else {
+        for (item in order_items) {
+          cat("- ", item, "\n")
+        }
+        cat("\nTotal Price: $", round(total_price, 2), "\n")
+      }
+    } else if (user_choice == "4") {
+      # Checkout and Finish
+      if (length(order_items) == 0) {
+        cat("\nYou haven't selected anything. Let's add some items to your order!\n")
+      } else {
+        cat("\n🚪 Thank you for ordering from Pizza Bear! Your total price is $", round(total_price, 2), ". Enjoy your meal! 🍕🐻\n")
+        break
+      }
+    } else {
+      cat("\nInvalid input. Please enter a valid menu option.\n")
+    }
+  }
+}
+
+# Run the Pizza Bear chatbot
+pizza_bear_chatbot()
