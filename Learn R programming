@@ -1,0 +1,40 @@
+# dataset
+?mtcars
+head(mtcars)
+dim(mtcars)
+names(mtcars)
+row.names(mtcars)
+mtcars$cyl
+mtcars$carb
+mean(mtcars$mpg)
+sort(mtcars$mpg)
+summary(mtcars)
+max(mtcars)
+min(mtcars$wt)
+median(mtcars$mpg)
+row.names(mtcars)[which.max((mtcars$hp))]
+row.names(mtcars)[which.min((mtcars$hp))]
+## คำอธิบาย 
+คำอธิบายเพื่อให้คนที่เริ่มเรียนเข้าใจขั้นตอนการทำงานกับข้อมูลใน dataset `mtcars` ด้วยภาษา R:
+
+1. **ข้อมูลและการแสดงข้อมูล:**
+   - `?mtcars`: เรียกดูคำอธิบายของ dataset `mtcars`.
+   - `head(mtcars)`: แสดงหัวตาราง (หรือข้อมูลแรก) ของ dataset `mtcars`.
+   - `dim(mtcars)`: แสดงจำนวนแถวและคอลัมน์ของ dataset `mtcars`.
+   - `names(mtcars)`: แสดงชื่อคอลัมน์ทั้งหมดของ dataset `mtcars`.
+   - `row.names(mtcars)`: แสดงชื่อแถวทั้งหมดของ dataset `mtcars`.
+
+2. **การเข้าถึงข้อมูลและการคำนวณ:**
+   - `mtcars$cyl`: เข้าถึงคอลัมน์ "cyl" ใน dataset `mtcars`.
+   - `mtcars$carb`: เข้าถึงคอลัมน์ "carb" ใน dataset `mtcars`.
+   - `mean(mtcars$mpg)`: คำนวณค่าเฉลี่ยของคอลัมน์ "mpg" ใน dataset `mtcars`.
+   - `sort(mtcars$mpg)`: เรียงลำดับค่าในคอลัมน์ "mpg" ใน dataset `mtcars`.
+
+3. **สรุปข้อมูล:**
+   - `summary(mtcars)`: สรุปข้อมูลทางสถิติเบื้องต้นของ dataset `mtcars`.
+   - `max(mtcars)`: หาค่าสูงสุดใน dataset `mtcars` .
+   - `min(mtcars$wt)`: หาค่าต่ำสุดในคอลัมน์ "wt" ใน dataset `mtcars`.
+   - `median(mtcars$mpg)`: หาค่ามัธยฐานของคอลัมน์ "mpg" ใน dataset `mtcars`.
+   - `row.names(mtcars)[which.max((mtcars$hp))]`: หาชื่อแถวที่มีค่าสูงสุดในคอลัมน์ "hp" ใน dataset `mtcars`.
+   - `row.names(mtcars)[which.min((mtcars$hp))]`: หาชื่อแถวที่มีค่าต่ำสุดในคอลัมน์ "hp" ใน dataset `mtcars`.
+**เครื่องหมาย $ ใช้เพื่อเข้าถึงข้อมูลภายในอ็อบเจกต์หรือข้อมูลภายในตัวแปร
