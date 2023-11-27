@@ -1,0 +1,23 @@
+library(tidyverse)
+url<-("https://data.bangkok.go.th/dataset/de1a5605-a0bc-4b00-91e5-8f752d04d32d/resource/419fec15-a47c-4e8d-a08d-fa33604263ab/download/10.-2565.csv")
+df1<-read.csv(url)
+
+df1$number_of_register
+summarise(df1$number_of_register)
+
+hist(df1$number_of_register)
+mean(df1$number_of_register)
+boxplot(df1$number_of_register)
+plot(df1$number_of_register,df1$number_of_eligible)
+
+lm(df1$number_of_register ~ df1$number_of_eligible, data=df1)
+
+ggplot(data = df1 ,mapping = aes(x=df1$number_of_register, y=df1$number_of_eligible))+
+  geom_point()+
+  geom_smooth()+
+  geom_rug()
+
+summary(df1$number_of_eligible)
+
+lm(df1$number_of_payee ~ df1$number_of_eligible,data = df1)
+plot(df1$number_of_eligible,df1$number_of_payee)
