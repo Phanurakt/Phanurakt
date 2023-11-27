@@ -1,0 +1,27 @@
+import pandas as pd
+import statsmodels.api as sm
+
+# Load the data
+data = pd.read_csv('sales_data.csv')
+
+# Split the data into training and testing sets
+train_data = data[data['date'] < '2023-10-01']
+test_data = data[data['date'] >= '2023-10-01']
+
+# Define the dependent variable (sales) and independent variables (date, store_id)
+X = train_data[['date', 'store_id']]
+y = train_data['sales']
+
+# Create a linear regression model
+model = sm.OLS(y, X).fit()
+
+# Make predictions on the test data
+predictions = model.predict(test_data[['date', 'store_id']])
+
+# Evaluate the model's performance
+print('Mean Absolute Error:', mean_absolute_error(test_data['sales'], predictions))
+print('Mean Squared Error:', mean_squared_error(test_data['sales'], predictions))
+print('R-squared:', r2_score(test_data['sales'], predictions))
+
+# Save the model
+model.save('sales_forecast_model.pkl')
